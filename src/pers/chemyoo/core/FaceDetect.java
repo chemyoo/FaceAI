@@ -33,9 +33,9 @@ public class FaceDetect {
 	
 	public static JsonObject detectFromUrl(String url) throws Exception {
 		Map<String, Object> map = new HashMap<>();
-		map.putIfAbsent("max_face_num", 10);
+		map.put("max_face_num", 10);
 		map.put("image_type", URL);
-		map.putIfAbsent("face_field", "age,beauty,gender,race,face_type");
+		map.put("face_field", "age,beauty,gender,race,face_type");
 		map.put("image", url);
 		String param = GsonUtils.toJson(map);
 		String result = HttpUtils.post(ConstantKeys.BAIDU_FACE_API, Authorization.getAuthToken(), 
