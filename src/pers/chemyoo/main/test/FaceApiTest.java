@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import pers.chemyoo.core.FaceDetect;
-import pers.chemyoo.utils.Base64Util;
+import pers.chemyoo.utils.Base64Utils;
 import pers.chemyoo.utils.FileSelectUtils;
-import pers.chemyoo.utils.FileUtil;
+import pers.chemyoo.utils.FileUtils;
 
 /** 
  * @author Author : jianqing.liu
@@ -31,9 +31,9 @@ public class FaceApiTest {
         
         String filepath = file.getAbsolutePath();
         
-        byte[] data = FileUtil.readFileByBytes(filepath);
+        byte[] data = FileUtils.readFileByBytes(filepath);
         try {
-        	map.put("image", Base64Util.encode(data));
+        	map.put("image", Base64Utils.encode(data));
 			System.err.println(FaceDetect.detect(map));
 		} catch (Exception e) {
 			e.printStackTrace();

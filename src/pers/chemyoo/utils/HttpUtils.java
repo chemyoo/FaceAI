@@ -9,12 +9,12 @@ import java.net.URL;
 /**
  * http π§æﬂ¿‡
  */
-public class HttpUtil {
+public class HttpUtils {
 
     public static String post(String requestUrl, String accessToken, String params)
             throws Exception {
         String contentType = "application/x-www-form-urlencoded";
-        return HttpUtil.post(requestUrl, accessToken, contentType, params);
+        return HttpUtils.post(requestUrl, accessToken, contentType, params);
     }
 
     public static String post(String requestUrl, String accessToken, String contentType, String params)
@@ -23,13 +23,13 @@ public class HttpUtil {
         if (requestUrl.contains("nlp")) {
             encoding = "GBK";
         }
-        return HttpUtil.post(requestUrl, accessToken, contentType, params, encoding);
+        return HttpUtils.post(requestUrl, accessToken, contentType, params, encoding);
     }
 
     public static String post(String requestUrl, String accessToken, String contentType, String params, String encoding)
             throws Exception {
         String url = requestUrl + "?access_token=" + accessToken;
-        return HttpUtil.postGeneralUrl(url, contentType, params, encoding);
+        return HttpUtils.postGeneralUrl(url, contentType, params, encoding);
     }
 
     public static String postGeneralUrl(String generalUrl, String contentType, String params, String encoding)

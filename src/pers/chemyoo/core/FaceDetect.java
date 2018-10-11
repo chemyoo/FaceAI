@@ -4,7 +4,7 @@ import java.util.Map;
 import com.google.gson.JsonObject;
 import pers.chemyoo.constants.ConstantKeys;
 import pers.chemyoo.utils.GsonUtils;
-import pers.chemyoo.utils.HttpUtil;
+import pers.chemyoo.utils.HttpUtils;
 
 /** 
  * @author Author : jianqing.liu
@@ -24,7 +24,7 @@ public class FaceDetect {
 	public static JsonObject detect(Map<String, Object> map) throws Exception {
 		map.put("max_face_num", 10);
 		String param = GsonUtils.toJson(map);
-		String result = HttpUtil.post(ConstantKeys.BAIDU_FACE_API, Authorization.getAuthToken(), 
+		String result = HttpUtils.post(ConstantKeys.BAIDU_FACE_API, Authorization.getAuthToken(), 
 				"application/json", param);
 		return GsonUtils.fromJson(result, JsonObject.class);
 	}
