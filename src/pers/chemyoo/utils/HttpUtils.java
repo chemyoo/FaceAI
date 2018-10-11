@@ -60,12 +60,12 @@ public class HttpUtils {
         BufferedReader in = null;
         in = new BufferedReader(
                 new InputStreamReader(connection.getInputStream(), encoding));
-        String result = "";
+        StringBuilder result = new StringBuilder();
         String getLine;
         while ((getLine = in.readLine()) != null) {
-            result += getLine;
+        	result.append(getLine);
         }
         in.close();
-        return result;
+        return result.toString();
     }
 }
