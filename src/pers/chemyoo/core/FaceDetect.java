@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 import com.google.gson.JsonObject;
 import pers.chemyoo.constants.ConstantKeys;
-import pers.chemyoo.utils.Base64Utils;
 import pers.chemyoo.utils.GsonUtils;
 import pers.chemyoo.utils.HttpUtils;
 
