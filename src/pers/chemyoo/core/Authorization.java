@@ -39,8 +39,8 @@ public class Authorization {
                 String result = IOUtils.toString(connection.getInputStream(), "utf-8");
                 JSONObject jsonObject = new JSONObject(result);
                 auth = new Auth();
-                auth.token = jsonObject.getString("access_token");
-                Long expiresIn = jsonObject.getLong("expires_in");
+                auth.token = jsonObject.getString("access_token");// get access_token.
+                Long expiresIn = jsonObject.getLong("expires_in");// get expire second.
                 
                 cal.add(Calendar.SECOND, expiresIn.intValue());
                 auth.expire = cal.getTime();
