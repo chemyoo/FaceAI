@@ -4,10 +4,15 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 import pers.chemyoo.core.FaceDetect;
 import pers.chemyoo.utils.Base64Utils;
 import pers.chemyoo.utils.FileSelectUtils;
 import pers.chemyoo.utils.FileUtils;
+import pers.chemyoo.utils.ShowResultUtils;
 
 /** 
  * @author Author : jianqing.liu
@@ -33,9 +38,25 @@ public class FaceApiTest {
         byte[] data = FileUtils.readFileByBytes(filepath);
         try {
         	map.put("image", Base64Utils.encode(data));
-			System.err.println(FaceDetect.detect(map));
+        	JsonObject json = FaceDetect.detect(map);
 			// use picture from network.
-			System.err.println(FaceDetect.detectFromUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539259612132&di=be744356e89718019759f9dcdcac9447&imgtype=0&src=http%3A%2F%2Fimg10.3lian.com%2Fshow2015%2F5%2F98%2F64.jpg"));
+			// System.err.println(FaceDetect.detectFromUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539259612132&di=be744356e89718019759f9dcdcac9447&imgtype=0&src=http%3A%2F%2Fimg10.3lian.com%2Fshow2015%2F5%2F98%2F64.jpg"))
+        	int code = json.get("error_code").getAsInt();
+        	if(code == 0) {
+        		JsonObject result = json.getAsJsonObject("result");
+        		JsonArray faces = result.getAsJsonArray("face_list");
+        		if(faces.size() > 0) {
+        			JsonObject firstFace = faces.get(0).getAsJsonObject();
+        			int age = firstFace.get("age").getAsInt();
+        			double beauty = firstFace.get("beauty").getAsDouble();
+        			String gender = firstFace.get("gender").getAsJsonObject().get("type").getAsString();
+        			StringBuilder buider = new StringBuilder();
+        			buider.append("年龄：").append(age).append("\r\n")
+        				  .append("相貌评分：").append(beauty).append("\r\n")
+        				  .append("性别：").append(gender);
+        			ShowResultUtils.show(buider);
+        		}
+        	}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
