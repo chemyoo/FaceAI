@@ -56,6 +56,8 @@ public class FaceApiTest {
         				  .append("ÐÔ±ð£º").append(gender);
         			ShowResultUtils.show(buider);
         		}
+        	} else {
+        		ShowResultUtils.show(json.get("error_msg").getAsString());
         	}
 		} catch (Exception e) {
 			e.printStackTrace();
