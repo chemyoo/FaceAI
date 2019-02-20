@@ -38,7 +38,9 @@ public class Authorization {
                 // Map<String, List<String>> map = connection.getHeaderFields()
                 String result = IOUtils.toString(connection.getInputStream(), "utf-8");
                 JSONObject jsonObject = new JSONObject(result);
-                auth = new Auth();
+                
+                if(auth == null) auth = new Auth();
+                
                 auth.token = jsonObject.getString("access_token");// get access_token.
                 Long expiresIn = jsonObject.getLong("expires_in");// get expire second.
                 
