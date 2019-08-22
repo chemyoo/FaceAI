@@ -1,7 +1,7 @@
 package pers.chemyoo.utils;
 
 /**
- * Base64 å·¥å…·ç±»
+ * Base64 ¹¤¾ßÀà
  */
 public class Base64Utils {
     private static final char last2byte = (char) Integer.parseInt("00000011", 2);
@@ -16,7 +16,7 @@ public class Base64Utils {
     }
 
     public static String encode(byte[] from) {
-        StringBuilder to = new StringBuilder((int) ((double) from.length * 1.34D) + 3);
+        StringBuilder to = new StringBuilder((int) (from.length * 1.34D) + 3);
         int num = 0;
         char currentByte = 0;
 

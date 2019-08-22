@@ -57,8 +57,7 @@ public class HttpUtils {
         // Map<String, List<String>> headers = connection.getHeaderFields()
         // 遍历所有的响应头字段
         // 定义 BufferedReader输入流来读取URL的响应
-        BufferedReader in = null;
-        in = new BufferedReader(
+        BufferedReader in = new BufferedReader(
                 new InputStreamReader(connection.getInputStream(), encoding));
         StringBuilder result = new StringBuilder();
         String getLine;

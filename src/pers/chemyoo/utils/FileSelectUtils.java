@@ -2,7 +2,6 @@ package pers.chemyoo.utils;
 import java.io.File;
 
 import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileSystemView;
 
 /** 
  * @author Author : jianqing.liu
@@ -15,10 +14,10 @@ public class FileSelectUtils {
 	private FileSelectUtils (){}
 	
 	public static File getFile() {
-		JFileChooser fileChooser = new JFileChooser();//"F:/pic"
-		FileSystemView fsv = FileSystemView.getFileSystemView();  //注意了，这里重要的一句
+		JFileChooser fileChooser = new JFileChooser("D:/");//"F:/pic"
+//		FileSystemView fsv = FileSystemView.getFileSystemView();  //注意了，这里重要的一句
 		//设置最初路径为桌面路径              
-		fileChooser.setCurrentDirectory(fsv.getHomeDirectory());
+//		fileChooser.setCurrentDirectory(fsv.getHomeDirectory());
 		fileChooser.setDialogTitle("请选择文件夹...");
 		fileChooser.setApproveButtonText("确定");
 		//只选择文件夹
